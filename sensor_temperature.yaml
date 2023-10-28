@@ -2,23 +2,23 @@
 sensor:
   - platform: homeassistant
     name: "Office temperature sensor from hassio"
-    entity_id: sensor.bureau_temperature
+    entity_id: sensor.office_ht
     #update_interval: 60s
     id: office_temperature_sensor
 
   - platform: homeassistant
-    name: "Living room temperature sensor from hassio"
-    entity_id: sensor.salon_temperature
-    id: living_room_temperature_sensor
+    name: "Studio temperature sensor from hassio"
+    entity_id: sensor.studio_ht
+    id: studio_temperature_sensor
 
   - platform: homeassistant
     name: "Bedroom temperature sensor from hassio"
-    entity_id: sensor.chambre_temperature
+    entity_id: sensor.bedroom_ht
     id: bedroom_temperature_sensor
 
   - platform: homeassistant
     name: "Bathroom temperature sensor from hassio"
-    entity_id: sensor.bain_temperature
+    entity_id: sensor.bathroom_ht
     id: bathroom_temperature_sensor
     
   - platform: homeassistant
@@ -36,6 +36,11 @@ sensor:
     entity_id: sensor.indoor_temperature
     id: indoor_temperature_sensor
 
+
+  - platform: homeassistant
+    name: "Study temperature sensor from hassio"
+    entity_id: sensor.study_ht
+    id: study_temperature_sensor
 
 ###### Other temperature sensor sample #######
 
