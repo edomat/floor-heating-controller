@@ -19,7 +19,7 @@ cover:
       - switch.turn_off: CH1_IA_pin
       - switch.turn_off: CH1_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH1_cover
 
   - platform: endstop
@@ -39,7 +39,7 @@ cover:
       - switch.turn_off: CH2_IA_pin
       - switch.turn_off: CH2_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH2_cover
     
   - platform: endstop
@@ -59,7 +59,7 @@ cover:
       - switch.turn_off: CH3_IA_pin
       - switch.turn_off: CH3_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH3_cover
     
   - platform: endstop
@@ -79,7 +79,7 @@ cover:
       - switch.turn_off: CH4_IA_pin
       - switch.turn_off: CH4_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH4_cover  
     
   - platform: endstop
@@ -99,7 +99,7 @@ cover:
       - switch.turn_off: CH5_IA_pin
       - switch.turn_off: CH5_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH5_cover
     
   - platform: endstop
@@ -119,7 +119,7 @@ cover:
       - switch.turn_off: CH6_IA_pin
       - switch.turn_off: CH6_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH6_cover    
     
   - platform: endstop
@@ -139,7 +139,7 @@ cover:
       - switch.turn_off: CH7_IA_pin
       - switch.turn_off: CH7_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH7_cover    
     
   - platform: endstop
@@ -159,7 +159,7 @@ cover:
       - switch.turn_off: CH8_IA_pin
       - switch.turn_off: CH8_IB_pin
     max_duration : 65s
-    #assumed_state: true
+    assumed_state: true
     id: CH8_cover
 
  
