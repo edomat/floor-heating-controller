@@ -1,46 +1,30 @@
 
 sensor:
   - platform: homeassistant
-    name: "Office temperature sensor from hassio"
-    entity_id: sensor.office_ht
+    name: "Mancave temperature sensor from hassio"
+    entity_id: sensor.sensor_mancave_temperature
     #update_interval: 60s
-    id: office_temperature_sensor
+    id: sensor_mancave_temperature
 
   - platform: homeassistant
     name: "Studio temperature sensor from hassio"
-    entity_id: sensor.studio_ht
-    id: studio_temperature_sensor
+    entity_id: sensor.sensor_studio_temperature
+    id: sensor_studio_temperature
 
   - platform: homeassistant
     name: "Bedroom temperature sensor from hassio"
-    entity_id: sensor.bedroom_ht
-    id: bedroom_temperature_sensor
+    entity_id: sensor.sensor_bedroom_temperature
+    id: sensor_bedroom_temperature
 
   - platform: homeassistant
     name: "Bathroom temperature sensor from hassio"
-    entity_id: sensor.bathroom_ht
-    id: bathroom_temperature_sensor
+    entity_id: sensor.sensor_bathroom_temperature
+    id: sensor_bathroom_temperature
     
   - platform: homeassistant
-    name: "Corridor temperature sensor from hassio"
-    entity_id: sensor.corridor_temperature
-    id: corridor_temperature_sensor
-
-  - platform: homeassistant
-    name: "Storage temperature sensor from hassio"
-    entity_id: sensor.reduit_temperature
-    id: reduit_temperature_sensor
-    
-  - platform: homeassistant
-    name: "Indoor temperature sensor from hassio"
-    entity_id: sensor.indoor_temperature
-    id: indoor_temperature_sensor
-
-
-  - platform: homeassistant
-    name: "Study temperature sensor from hassio"
-    entity_id: sensor.study_ht
-    id: study_temperature_sensor
+    name: "Femcave temperature sensor from hassio"
+    entity_id: sensor.sensor_femcave_temperature
+    id: sensor_femcave_temperature
 
 ###### Other temperature sensor sample #######
 
