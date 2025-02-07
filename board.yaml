@@ -46,6 +46,7 @@ api:
       
 
 ota:
+  platform: esphome
 
 
 # SN74HC595 I/O Expander (shift register) to control L9110s chips
