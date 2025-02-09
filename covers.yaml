@@ -8,17 +8,17 @@ cover:
     open_action:
       - switch.turn_on: CH1_IB_pin
       - switch.turn_off: CH1_IA_pin
-    open_duration: 60s #39s
+    open_duration: 26s #39s
     open_endstop: BEMF_1_sensor
     close_action:
       - switch.turn_on: CH1_IA_pin
       - switch.turn_off: CH1_IB_pin
-    close_duration: 60s #49s
+    close_duration: 27s #49s
     close_endstop: BEMF_1_sensor
     stop_action:
       - switch.turn_off: CH1_IA_pin
       - switch.turn_off: CH1_IB_pin
-    max_duration : 65s
+    max_duration : 30s
     #assumed_state: true
     id: CH1_cover
 
@@ -28,17 +28,17 @@ cover:
     open_action:
       - switch.turn_on: CH2_IB_pin
       - switch.turn_off: CH2_IA_pin
-    open_duration: 60s #39s
+    open_duration: 27s #39s
     open_endstop: BEMF_2_sensor
     close_action:
       - switch.turn_on: CH2_IA_pin
       - switch.turn_off: CH2_IB_pin
-    close_duration: 60s #49s
+    close_duration: 29s #49s
     close_endstop: BEMF_2_sensor
     stop_action:
       - switch.turn_off: CH2_IA_pin
       - switch.turn_off: CH2_IB_pin
-    max_duration : 65s
+    max_duration : 30s
     #assumed_state: true
     id: CH2_cover
     
@@ -48,17 +48,17 @@ cover:
     open_action:
       - switch.turn_on: CH3_IB_pin
       - switch.turn_off: CH3_IA_pin
-    open_duration: 60s #39s
+    open_duration: 26s #39s
     open_endstop: BEMF_3_sensor
     close_action:
       - switch.turn_on: CH3_IA_pin
       - switch.turn_off: CH3_IB_pin
-    close_duration: 60s #49s
+    close_duration: 27s #49s
     close_endstop: BEMF_3_sensor
     stop_action:
       - switch.turn_off: CH3_IA_pin
       - switch.turn_off: CH3_IB_pin
-    max_duration : 65s
+    max_duration : 30s
     #assumed_state: true
     id: CH3_cover
     
@@ -68,17 +68,17 @@ cover:
     open_action:
       - switch.turn_on: CH4_IB_pin
       - switch.turn_off: CH4_IA_pin
-    open_duration: 60s #39s
+    open_duration: 26s #39s
     open_endstop: BEMF_4_sensor
     close_action:
       - switch.turn_on: CH4_IA_pin
       - switch.turn_off: CH4_IB_pin
-    close_duration: 60s #49s
+    close_duration: 27s #49s
     close_endstop: BEMF_4_sensor
     stop_action:
       - switch.turn_off: CH4_IA_pin
       - switch.turn_off: CH4_IB_pin
-    max_duration : 65s
+    max_duration : 30s
     #assumed_state: true
     id: CH4_cover  
     
@@ -88,17 +88,17 @@ cover:
     open_action:
       - switch.turn_on: CH5_IB_pin
       - switch.turn_off: CH5_IA_pin
-    open_duration: 60s #39s
+    open_duration: 27s #39s
     open_endstop: BEMF_5_sensor
     close_action:
       - switch.turn_on: CH5_IA_pin
       - switch.turn_off: CH5_IB_pin
-    close_duration: 60s #49s
+    close_duration: 28s #49s
     close_endstop: BEMF_5_sensor
     stop_action:
       - switch.turn_off: CH5_IA_pin
       - switch.turn_off: CH5_IB_pin
-    max_duration : 65s
+    max_duration : 30s
     #assumed_state: true
     id: CH5_cover
     
@@ -108,17 +108,17 @@ cover:
     open_action:
       - switch.turn_on: CH6_IB_pin
       - switch.turn_off: CH6_IA_pin
-    open_duration: 60s #39s
+    open_duration: 28s #39s
     open_endstop: BEMF_6_sensor
     close_action:
       - switch.turn_on: CH6_IA_pin
       - switch.turn_off: CH6_IB_pin
-    close_duration: 60s #49s
+    close_duration: 31s #49s
     close_endstop: BEMF_6_sensor
     stop_action:
       - switch.turn_off: CH6_IA_pin
       - switch.turn_off: CH6_IB_pin
-    max_duration : 65s
+    max_duration : 35s
     #assumed_state: true
     id: CH6_cover    
     
@@ -128,17 +128,17 @@ cover:
     open_action:
       - switch.turn_on: CH7_IB_pin
       - switch.turn_off: CH7_IA_pin
-    open_duration: 60s #39s
+    open_duration: 27s #39s
     open_endstop: BEMF_7_sensor
     close_action:
       - switch.turn_on: CH7_IA_pin
       - switch.turn_off: CH7_IB_pin
-    close_duration: 60s #49s
+    close_duration: 30s #49s
     close_endstop: BEMF_7_sensor
     stop_action:
       - switch.turn_off: CH7_IA_pin
       - switch.turn_off: CH7_IB_pin
-    max_duration : 65s
+    max_duration : 35s
     #assumed_state: true
     id: CH7_cover    
     
@@ -148,17 +148,17 @@ cover:
     open_action:
       - switch.turn_on: CH8_IB_pin
       - switch.turn_off: CH8_IA_pin
-    open_duration: 60s #39s
+    open_duration: 3s #39s
     open_endstop: BEMF_8_sensor
     close_action:
       - switch.turn_on: CH8_IA_pin
       - switch.turn_off: CH8_IB_pin
-    close_duration: 60s #49s
+    close_duration: 3s #49s
     close_endstop: BEMF_8_sensor
     stop_action:
       - switch.turn_off: CH8_IA_pin
       - switch.turn_off: CH8_IB_pin
-    max_duration : 65s
+    max_duration : 5s
     #assumed_state: true
     id: CH8_cover
 
