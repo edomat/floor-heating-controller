@@ -119,8 +119,8 @@ substitutions:
   
   ch1_bemf_trigger: "0.08"
   ch2_bemf_trigger: "0.08"
-  ch3_bemf_trigger: "0.05"
-  ch4_bemf_trigger: "0.05"
+  ch3_bemf_trigger: "0.08"
+  ch4_bemf_trigger: "0.08"
   ch5_bemf_trigger: "0.08"
   ch6_bemf_trigger: "0.08"
   ch7_bemf_trigger: "0.08"
