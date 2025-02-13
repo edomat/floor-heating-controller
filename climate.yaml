@@ -60,21 +60,14 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch1_default_target_temperature_low}
-        default_target_temperature_high: ${ch1_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
          - lambda: 'return;' # do nothing cause action is triggered by time interval
-    cool_action:
-         - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
     visual:
@@ -92,20 +85,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch2_default_target_temperature_low}
-        default_target_temperature_high: ${ch2_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -124,20 +110,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch3_default_target_temperature_low}
-        default_target_temperature_high: ${ch3_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -156,20 +135,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch4_default_target_temperature_low}
-        default_target_temperature_high: ${ch4_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -188,20 +160,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch5_default_target_temperature_low}
-        default_target_temperature_high: ${ch5_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -220,20 +185,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch6_default_target_temperature_low}
-        default_target_temperature_high: ${ch6_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -252,20 +210,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch7_default_target_temperature_low}
-        default_target_temperature_high: ${ch7_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
@@ -284,20 +235,13 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch8_default_target_temperature_low}
-        default_target_temperature_high: ${ch8_default_target_temperature_high}
         mode: HEAT_COOL
-    min_cooling_off_time: 300s
-    min_cooling_run_time: 300s
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    cool_deadband: 0 °C
     heat_overrun: 0 °C
-    cool_overrun: 0 °C
     heat_action: 
-         - lambda: 'return;' 
-    cool_action:
          - lambda: 'return;' 
     idle_action:
          - lambda: 'return;' 
