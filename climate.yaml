@@ -60,7 +60,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch1_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -85,7 +84,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch2_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -110,7 +108,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch3_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -135,7 +132,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch4_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -160,7 +156,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch5_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -185,7 +180,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch6_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -210,7 +204,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch7_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
@@ -235,7 +228,6 @@ climate:
     preset:
       - name: default
         default_target_temperature_low: ${ch8_default_target_temperature_low}
-        mode: HEAT_COOL
     min_heating_off_time: 300s
     min_heating_run_time: 300s
     min_idle_time: 30s
