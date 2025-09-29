@@ -99,7 +99,7 @@ substitutions:
 
   ch7_thermostat_name: kupelna 
   ch7_thermostat_sensor: senzor_kupelna_temperature
-  ch7_thermostat_position_formula: "(id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_low - 0.2 ? 0.8 : (id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.2 : (id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_low ? 0.2 : 0.2)))) / 0.1 * 0.1;"
+  ch7_thermostat_position_formula: "(id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_low - 0.2 ? 0.8 : (id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.2 : (id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_low ? 0.23 : 0.2)))) / 0.1 * 0.1;"
   ch7_default_target_temperature_low: 21 °C
   
   ch8_thermostat_name: rezerva 
@@ -155,3 +155,4 @@ packages:
 # web_server:
   # port: 80
   # log: false
+
