@@ -68,8 +68,7 @@ substitutions:
                 # //rounded at 0.1 =>  f(x) = round(((x+1)/2)/0.1)*0.1
                 # //float target_position = round(((diff_temp+1)/2)/0.1)*0.1;
                 # float target_position = round(((((id(${ch1_thermostat_name}_thermostat).target_temperature_high + id(${ch1_thermostat_name}_thermostat).target_temperature_low)/2 - id(${ch1_thermostat_name}_thermostat).current_temperature)+1)/2)/0.1)*0.1;
-  ch1_thermostat_name: obyvacka1
-  ch1_thermostat_sensor: senzor_obyvacka_1np_temperature
+
   ch1_thermostat_position_formula: "(id(${ch1_thermostat_name}_thermostat).current_temperature > id(${ch1_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch1_thermostat_name}_thermostat).current_temperature > id(${ch1_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.16 : (id(${ch1_thermostat_name}_thermostat).current_temperature >= id(${ch1_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.2 : 0.8))) / 0.1 * 0.1;"
   ch1_default_target_temperature_low: 22 °C
   
@@ -157,6 +156,7 @@ packages:
 # web_server:
   # port: 80
   # log: false
+
 
 
 
