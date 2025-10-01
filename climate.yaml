@@ -65,7 +65,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
@@ -90,7 +90,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -115,7 +115,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -140,7 +140,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -165,7 +165,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -190,7 +190,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -215,7 +215,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -240,7 +240,7 @@ climate:
     min_heating_run_time: 300s
     min_idle_time: 30s
     heat_deadband: 0 °C
-    heat_overrun: 0 °C
+    heat_overrun: 0.2 °C
     heat_action: 
          - lambda: 'return;' 
     idle_action:
@@ -249,3 +249,4 @@ climate:
       min_temperature: 10 °C
       max_temperature: 30 °C
       temperature_step: 0.1 °C
+
