@@ -46,6 +46,8 @@
 # After OTA update, the EN (reset) button must be pressed to run firmware
 # do not use gpio12 (MTDI)
 
+
+
 substitutions:
   name: floor-heating
   friendly_name: "Floor heating"
@@ -157,6 +159,7 @@ packages:
 # web_server:
   # port: 80
   # log: false
+
 
 
 
