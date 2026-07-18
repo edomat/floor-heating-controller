@@ -1,0 +1,27 @@
+# hvac_season.yaml - imports the system-wide season from HA and mirrors it
+# into a restored global (survives HA outages and reboots).
+# 0 = Off, 1 = Heat, 2 = Cool
+
+globals:
+  - id: hvac_season_mode_fhc
+    type: int
+    restore_value: true
+    initial_value: '1'
+
+text_sensor:
+  - platform: homeassistant
+    id: hvac_season_ha_fhc
+    entity_id: input_select.hvac_season
+    internal: true
+    on_value:
+      then:
+        - lambda: |-
+            int mode = id(hvac_season_mode_fhc);
+            if (x == "Heat")      mode = 1;
+            else if (x == "Cool") mode = 2;
+            else if (x == "Off")  mode = 0;
+            if (mode != id(hvac_season_mode_fhc)) {
+              ESP_LOGI("SEASON", "Floor controller season: %d -> %d (%s)",
+                       id(hvac_season_mode_fhc), mode, x.c_str());
+              id(hvac_season_mode_fhc) = mode;
+            }
