@@ -1,4 +1,10 @@
 # change log 
+# v105 (07.2026):
+# cooling support: season-aware formulas (hvac_season.yaml package, driven by
+# HA input_select.hvac_season). Per channel: chN_thermostat_position_formula_cool
+# (warm room -> open valve, based on target_temperature_high) and
+# chN_default_target_temperature_high. climate.yaml presets are HEAT_COOL now.
+# Exclude a room from cooling by switching its climate entity to OFF (kupelna).
 # v104:
 # opamp version = new BEMF triggers
 # v103:
@@ -54,6 +60,13 @@ substitutions:
   wifi_ssid: !secret wifi_ssid
   wifi_password: !secret wifi_password
   #must only consist of lowercase characters, the underscorecharacter and numbers. The character '#' cannot be used.
+
+  # Formula convention:
+  #   heating formula (…_position_formula):       cold room  -> open valve
+  #   cooling formula (…_position_formula_cool):  warm room  -> open valve
+  # The cooling formula mirrors each channel's heating step values around
+  # target_temperature_high instead of target_temperature_low.
+
   ch1_thermostat_name: obyvacka1 
   ch1_thermostat_sensor: senzor_obyvacka_2np_temperature  #name of the sensor
                  #################
@@ -72,44 +85,63 @@ substitutions:
                 # float target_position = round(((((id(${ch1_thermostat_name}_thermostat).target_temperature_high + id(${ch1_thermostat_name}_thermostat).target_temperature_low)/2 - id(${ch1_thermostat_name}_thermostat).current_temperature)+1)/2)/0.1)*0.1;
 
   ch1_thermostat_position_formula: "(id(${ch1_thermostat_name}_thermostat).current_temperature > id(${ch1_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch1_thermostat_name}_thermostat).current_temperature > id(${ch1_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.15 : (id(${ch1_thermostat_name}_thermostat).current_temperature >= id(${ch1_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch1_thermostat_position_formula_cool: "(id(${ch1_thermostat_name}_thermostat).current_temperature < id(${ch1_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch1_thermostat_name}_thermostat).current_temperature < id(${ch1_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.15 : (id(${ch1_thermostat_name}_thermostat).current_temperature <= id(${ch1_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch1_default_target_temperature_low: 22 °C
+  ch1_default_target_temperature_high: 24 °C
   
   ch2_thermostat_name: obyvacka2 
   ch2_thermostat_sensor: senzor_obyvacka_2np_temperature
   ch2_thermostat_position_formula: "(id(${ch2_thermostat_name}_thermostat).current_temperature > id(${ch2_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch2_thermostat_name}_thermostat).current_temperature > id(${ch2_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.15 : (id(${ch2_thermostat_name}_thermostat).current_temperature >= id(${ch2_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch2_thermostat_position_formula_cool: "(id(${ch2_thermostat_name}_thermostat).current_temperature < id(${ch2_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch2_thermostat_name}_thermostat).current_temperature < id(${ch2_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.15 : (id(${ch2_thermostat_name}_thermostat).current_temperature <= id(${ch2_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch2_default_target_temperature_low: 20 °C
+  ch2_default_target_temperature_high: 24 °C
   
   ch3_thermostat_name: kuchyna
   ch3_thermostat_sensor: senzor_kuchyna_temperature
   ch3_thermostat_position_formula: "(id(${ch3_thermostat_name}_thermostat).current_temperature > id(${ch3_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch3_thermostat_name}_thermostat).current_temperature > id(${ch3_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.15 : (id(${ch3_thermostat_name}_thermostat).current_temperature >= id(${ch3_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch3_thermostat_position_formula_cool: "(id(${ch3_thermostat_name}_thermostat).current_temperature < id(${ch3_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch3_thermostat_name}_thermostat).current_temperature < id(${ch3_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.15 : (id(${ch3_thermostat_name}_thermostat).current_temperature <= id(${ch3_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch3_default_target_temperature_low: 21 °C
+  ch3_default_target_temperature_high: 24 °C
   
   ch4_thermostat_name: spalna1
   ch4_thermostat_sensor: senzor_spalna_temperature
   ch4_thermostat_position_formula: "(id(${ch4_thermostat_name}_thermostat).current_temperature > id(${ch4_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch4_thermostat_name}_thermostat).current_temperature > id(${ch4_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.15 : (id(${ch4_thermostat_name}_thermostat).current_temperature >= id(${ch4_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch4_thermostat_position_formula_cool: "(id(${ch4_thermostat_name}_thermostat).current_temperature < id(${ch4_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch4_thermostat_name}_thermostat).current_temperature < id(${ch4_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.15 : (id(${ch4_thermostat_name}_thermostat).current_temperature <= id(${ch4_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch4_default_target_temperature_low: 21 °C
+  ch4_default_target_temperature_high: 24 °C
   
   ch5_thermostat_name: spalna2 
   ch5_thermostat_sensor: senzor_spalna_temperature
   ch5_thermostat_position_formula: "(id(${ch5_thermostat_name}_thermostat).current_temperature > id(${ch5_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch5_thermostat_name}_thermostat).current_temperature > id(${ch5_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.15 : (id(${ch5_thermostat_name}_thermostat).current_temperature >= id(${ch5_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch5_thermostat_position_formula_cool: "(id(${ch5_thermostat_name}_thermostat).current_temperature < id(${ch5_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch5_thermostat_name}_thermostat).current_temperature < id(${ch5_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.15 : (id(${ch5_thermostat_name}_thermostat).current_temperature <= id(${ch5_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch5_default_target_temperature_low: 20 °C
+  ch5_default_target_temperature_high: 24 °C
   
   ch6_thermostat_name: satnik
   ch6_thermostat_sensor: senzor_satnik_temperature
   ch6_thermostat_position_formula: "(id(${ch6_thermostat_name}_thermostat).current_temperature > id(${ch6_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch6_thermostat_name}_thermostat).current_temperature > id(${ch6_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.17 : (id(${ch6_thermostat_name}_thermostat).current_temperature >= id(${ch6_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
+  ch6_thermostat_position_formula_cool: "(id(${ch6_thermostat_name}_thermostat).current_temperature < id(${ch6_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch6_thermostat_name}_thermostat).current_temperature < id(${ch6_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.17 : (id(${ch6_thermostat_name}_thermostat).current_temperature <= id(${ch6_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.3 : 0.8))) / 0.1 * 0.1;"
   ch6_default_target_temperature_low: 21 °C
+  ch6_default_target_temperature_high: 24 °C
 
 
   ch7_thermostat_name: kupelna 
   ch7_thermostat_sensor: senzor_kupelna_temperature
   ch7_thermostat_position_formula: "(id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch7_thermostat_name}_thermostat).current_temperature > id(${ch7_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.18 : (id(${ch7_thermostat_name}_thermostat).current_temperature >= id(${ch7_thermostat_name}_thermostat).target_temperature_low - 0.1 ? 0.30 : 0.80))) / 0.1 * 0.1;"
+  # kupelna is NOT cooled - switch this climate entity to OFF for the summer.
+  # The cool formula exists only so the substitution resolves if the channel
+  # is ever re-enabled.
+  ch7_thermostat_position_formula_cool: "(id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch7_thermostat_name}_thermostat).current_temperature < id(${ch7_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.18 : (id(${ch7_thermostat_name}_thermostat).current_temperature <= id(${ch7_thermostat_name}_thermostat).target_temperature_high + 0.1 ? 0.30 : 0.80))) / 0.1 * 0.1;"
   ch7_default_target_temperature_low: 21 °C
+  ch7_default_target_temperature_high: 25 °C
 
   
   ch8_thermostat_name: rezerva 
   ch8_thermostat_sensor: senzor_obyvacka_2np_temperature
   ch8_thermostat_position_formula: "(id(${ch8_thermostat_name}_thermostat).current_temperature > id(${ch8_thermostat_name}_thermostat).target_temperature_low + 0.2 ? 0 : (id(${ch8_thermostat_name}_thermostat).current_temperature < id(${ch8_thermostat_name}_thermostat).target_temperature_low - 0.2 ? 0.8 : (id(${ch8_thermostat_name}_thermostat).current_temperature > id(${ch8_thermostat_name}_thermostat).target_temperature_low + 0.1 ? 0.13 : (id(${ch8_thermostat_name}_thermostat).current_temperature < id(${ch8_thermostat_name}_thermostat).target_temperature_low ? 0.2 : 0.15)))) / 0.1 * 0.1;"
+  ch8_thermostat_position_formula_cool: "(id(${ch8_thermostat_name}_thermostat).current_temperature < id(${ch8_thermostat_name}_thermostat).target_temperature_high - 0.2 ? 0 : (id(${ch8_thermostat_name}_thermostat).current_temperature > id(${ch8_thermostat_name}_thermostat).target_temperature_high + 0.2 ? 0.8 : (id(${ch8_thermostat_name}_thermostat).current_temperature < id(${ch8_thermostat_name}_thermostat).target_temperature_high - 0.1 ? 0.13 : (id(${ch8_thermostat_name}_thermostat).current_temperature > id(${ch8_thermostat_name}_thermostat).target_temperature_high ? 0.2 : 0.15)))) / 0.1 * 0.1;"
   ch8_default_target_temperature_low: 22 °C
+  ch8_default_target_temperature_high: 24 °C
   
   TZ: "Europe/Zurich" #timezone
   
@@ -144,6 +176,7 @@ packages:
   wifi: !include wifi.yaml
   board: !include board.yaml
   time: !include time.yaml
+  hvac_season: !include hvac_season.yaml
   climate: !include climate.yaml
   script_termostat_check: !include script_termostat_check.yaml
   script_calibrate_valves: !include script_calibrate_valves.yaml
@@ -159,13 +192,3 @@ packages:
 # web_server:
   # port: 80
   # log: false
-
-
-
-
-
-
-
-
-
-
