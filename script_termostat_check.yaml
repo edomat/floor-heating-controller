@@ -5,13 +5,20 @@
 #           (warm room -> open, based on target_temperature_high).
 #           Season Off -> no adjustments (valves stay where they are;
 #           the floor pump is off anyway).
+# 09.2026 : FIX - a room's climate entity being CLIMATE_MODE_OFF used to
+#           return immediately, leaving its valve frozen wherever it was
+#           (it never closed). It now forces target_position = 0 instead,
+#           so the existing move-if-changed guard (min_movement, below)
+#           closes the valve exactly like any other target change - and
+#           issues no redundant close command once it's already at 0.
+#           The season==0 (whole system off) short-circuit is unchanged:
+#           that case still leaves valves untouched, as before.
 
 script:
 
   - id: TH1_check
     then:
          - lambda: |-
-                if (id(${ch1_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH1_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -21,7 +28,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch1_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch1_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch1_thermostat_position_formula}
@@ -42,7 +51,6 @@ script:
   - id: TH2_check
     then:
          - lambda: |-
-                if (id(${ch2_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH2_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -52,7 +60,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch2_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch2_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch2_thermostat_position_formula}
@@ -73,7 +83,6 @@ script:
   - id: TH3_check
     then:
          - lambda: |-
-                if (id(${ch3_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH3_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -83,7 +92,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch3_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch3_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch3_thermostat_position_formula}
@@ -104,7 +115,6 @@ script:
   - id: TH4_check
     then:
          - lambda: |-
-                if (id(${ch4_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH4_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -114,7 +124,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch4_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch4_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch4_thermostat_position_formula}
@@ -135,7 +147,6 @@ script:
   - id: TH5_check
     then:
          - lambda: |-
-                if (id(${ch5_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH5_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -145,7 +156,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch5_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch5_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch5_thermostat_position_formula}
@@ -166,7 +179,6 @@ script:
   - id: TH6_check
     then:
          - lambda: |-
-                if (id(${ch6_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH6_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -176,7 +188,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch6_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch6_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch6_thermostat_position_formula}
@@ -197,7 +211,6 @@ script:
   - id: TH7_check
     then:
          - lambda: |-
-                if (id(${ch7_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH7_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -207,7 +220,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch7_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch7_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch7_thermostat_position_formula}
@@ -228,7 +243,6 @@ script:
   - id: TH8_check
     then:
          - lambda: |-
-                if (id(${ch8_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {return;}
                 if (id(hvac_season_mode_fhc) == 0) {return;}
                 ESP_LOGD("main", "TH8_check triggered");
                 // check if any others actuator is running. If yes, stop action and return.
@@ -238,7 +252,9 @@ script:
                 }
 
                 float target_position;
-                if (id(hvac_season_mode_fhc) == 2) {
+                if (id(${ch8_thermostat_name}_thermostat).mode == CLIMATE_MODE_OFF) {
+                    target_position = 0;
+                } else if (id(hvac_season_mode_fhc) == 2) {
                     target_position = ${ch8_thermostat_position_formula_cool}
                 } else {
                     target_position = ${ch8_thermostat_position_formula}
