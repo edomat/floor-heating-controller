@@ -6,6 +6,13 @@
 #           script_termostat_check.yaml; a channel is excluded from
 #           heating AND cooling by switching its climate entity to OFF
 #           (e.g. kupelna in summer).
+# 09.2026 : added on_state -> script.execute so a mode change (e.g.
+#           switching a room to OFF) is picked up immediately instead of
+#           waiting for the next 15/17/19/21 min interval tick. Paired
+#           with the script_termostat_check.yaml fix that makes OFF force
+#           target_position = 0. Safe to fire often - the check script's
+#           own min_movement guard and paired-channel busy check make
+#           repeated calls a no-op once the valve is already at target.
 # 19.10.2022 : https://github.com/esphome/esphome/pull/3643
 # 11.11.2021 : remove away_config (temperature do not survive reboot : https://github.com/esphome/issues/issues/2680#issuecomment-966863690
 
@@ -37,6 +44,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH1_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -69,6 +78,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH2_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -101,6 +112,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH3_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -133,6 +146,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH4_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -165,6 +180,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH5_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -197,6 +214,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH6_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -229,6 +248,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH7_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
@@ -261,6 +282,8 @@ climate:
          - lambda: 'return;' # do nothing cause action is triggered by time interval
     idle_action:
          - lambda: 'return;'
+    on_state:
+      - script.execute: TH8_check
     visual:
       min_temperature: 10 °C
       max_temperature: 30 °C
